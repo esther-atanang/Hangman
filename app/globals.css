@@ -2,32 +2,123 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+@layer base {
+    body {
+        @apply box-border p-0 m-0 bg-main bg-no-repeat bg-cover;
+    }
+    
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@keyframes loadUp {
+    0%{
+        transform: scale(0.85);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+
+@keyframes slide-and-fade-in {
+    0% {
+      top: 50px;
+      transform: scale(0.85);
+    }
+  
+    100% {
+      top: 0px;
+      transform: scale(1);
+    }
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
+/*Put all of the colors somewher, hide them **/
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .grid-cols{
+        display: grid;
+        grid-template-columns: repeat(9,min(80px, 1fr))
+    }
+   .w-20{
+     @apply w-1;
+   } 
+   .w-40{
+     @apply w-[40%];
+   }
+   .w-60{
+    @apply w-[60%];
+   }
+   .w-80{
+     @apply w-[80%];
+   }
+   .w-100{
+     @apply w-[100%];
+   } 
+    .animate-header{
+        animation: loadUp 0.5s ease-in;
+    }
+    .animate-card{
+        animation: slide-and-fade-in 0.5s ease-out;
+    }
+    .second{
+       animation-delay: 0.5s;
+    }
+    .third{
+        animation-delay: 1s;
+    }
+    .shadow-1 {
+        box-shadow: 0px -4px 0px 5px #9D2DF5 inset;
+    }
+    .btn-gradient{
+        background-image: linear-gradientI( #FE71FE ,#7199FF);
+    }
+    .gradient {
+        background-image: linear-gradient(#fd9bfdeb, #8cabfae0);
+    }
+
+    .border-inner-shadow {
+        box-shadow: inset 1px 6px 0px rgba(255, 255, 255, 0.099);
+    }
+
+    .header-bg {
+        background-image: linear-gradient(#344ABA, #001479c4);
+    }
+
+    .header-inner-shadow {
+        box-shadow: inset 0px 7px 0px 3px #2463FF;
+        /* Top inner shadow */
+    }
+    .play-btn-border{
+      @apply border-b-[15px] border-l-[5px] border-r-[5px] border-t-[2px] border-borderColor;
+    }
+    .text-s {
+        -webkit-text-stroke: 10px #243041;
+        paint-order: stroke fill;
+    }
+    .text-c {
+        background: -webkit-linear-gradient(#67B6FF, #FFFFFF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .playbtn1{
+        @apply w-[160px] h-[160px] border-borderColor border-b-8 border-l-4 border-r-4 border-t-2;
+    }
+    .playbtn2{
+        @apply w-[60px] h-[60px]; 
+    }
+    .playbtn3{
+        @apply pt-4 pb-4 md:pt-14 md:pb-14 rounded-[2rem] lg:text-[3rem];
+    }
+    .playbtn4{
+        @apply pt-4 pb-4 rounded-[4rem];
+    }
+    .quitbtn{
+        box-shadow: inset 1px 6px 0px #C642FB;
+        background-image: linear-gradient( #FE71FE ,#7199FF);
+    }
+    .changeCat{
+        @apply pl-16
+    }
+    .btnImgSize{
+        @apply w-[40px] h-[30px];  
+    }
 }

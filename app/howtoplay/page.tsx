@@ -12,7 +12,7 @@ const page = () => {
             </section>
             <section className="flex flex-col gap-y-5 sm:gap-y-6 mt-10  ns:mt-12 md:mt-12 ml:mt-20 lg:mt-12 lg:flex-row lg:gap-x-6 lg:pt-12 ">
                 {INSTRUCTION.map((value) =>(
-                    <div className={`bg-white p-6 flex flex-row lg:flex-col gap-x-6 rounded-3xl lg:gap-y-10 lg:flex-1 lg:p-7 lg:pb-16 lg:pt-5 xl:pt-12 animate-card ${value.class} relative`}>
+                    <div key={value.id} className={`bg-white p-6 flex flex-row lg:flex-col gap-x-6 rounded-3xl lg:gap-y-10 lg:flex-1 lg:p-7 lg:pb-16 lg:pt-5 xl:pt-12 animate-card ${value.class} relative`}>
                     <div className="gap-x-5 md:flex md:items-center md:justify-center">
                         <p className="text-3xl md:text-5xl text-blue lg:text-6xl">{value.id}</p>
                        

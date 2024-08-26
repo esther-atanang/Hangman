@@ -48,7 +48,7 @@ const Game = ({ onOpen }: any) => {
       id.current = setTimeout(()=>onOpen("You Win"), 3000) 
    }
    return ()=> clearTimeout(id);
-  },[found])
+  },[found,word, wordarr.length, onOpen])
 
 
   //This one 🤨 This is for when You lose.
@@ -65,7 +65,7 @@ const Game = ({ onOpen }: any) => {
      id.current = setTimeout(()=>onOpen("You Lose"), 3000)
     }
     return () => clearTimeout(id.current)
-  },[life])
+  },[life,onOpen])
 
   
   //This is to fetch random words
@@ -88,7 +88,7 @@ const Game = ({ onOpen }: any) => {
       setWord(_word as string)
     }
     return () => _word = ""
-  }, [])
+  }, [category])
  
   
   function letterInWord(i:number,letter:string){

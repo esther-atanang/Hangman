@@ -5,7 +5,7 @@ import { heart, menu } from "@/app/Utils";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { fetchRandomAnimal, fetchRandomBook, fetchRandomCountry, fetchRandomMovie, fetchRandomSeries, fetchRandomSport } from "../lib/data";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 
 const Game = ({ onOpen }: any) => {
   //The word that loads up when the game starts
@@ -158,6 +158,7 @@ const Game = ({ onOpen }: any) => {
 
       {/* WORD BANKS */}
       <div className="flex h-[200px] justify-center flex-col lg:mr-[5rem] lg:ml-[5rem] lg:mt-[1rem]">
+        <Suspense fallback={<p> Searching for word...</p>}>
         <div className="flex flex-wrap p-10 gap-y-2 place-content-center">
           {/**I NEED TO FIX THIS */}
           {wordarr?.map((value, i) => (
@@ -184,6 +185,7 @@ const Game = ({ onOpen }: any) => {
 
           ))}
         </div>
+        </Suspense>
       </div>
 
       {/* ALPHABET GRID */}

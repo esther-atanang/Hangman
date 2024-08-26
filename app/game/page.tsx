@@ -209,7 +209,7 @@ const WordBank = ({OnCategory, getMap, life,found, wordarr}:any) => {
                 map.delete(el)
               }
            }}
-           className={`font-main text-transparent uppercase flex-1  w-[10vw] xl:w-[8vw]  p-2 ns:p-3  md:p-4 lg:p- rounded-xl text-5xl bg-blue  border-darkNavy border-l-4 border-r-4 border-b-8 border-t-4 md:rounded-2xl border-inner-shadow lg:rounded-[2rem] xl:rounded-[2.5rem] opacity-50 transition-all duration-1000 xl:text-8xl flex items-center justify-center`}
+           className={`font-main text-transparent uppercase flex-1  w-[10vw] xl:w-[8vw]  p-2 ns:p-3  md:p-4 lg:p- rounded-xl text-5xl bg-blue  border-darkNavy border-l-4 border-r-4 border-b-8 border-t-4 md:rounded-2xl border-inner-shadow lg:rounded-[2rem] xl:rounded-[2.5rem] opacity-50 transition-all duration-1000 xl:text-7xl flex items-center justify-center`}
          >
            {letter}
          </p>

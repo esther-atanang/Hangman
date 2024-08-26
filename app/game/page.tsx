@@ -27,8 +27,7 @@ const Game = ({ onOpen }: any) => {
   const id:any = useRef(null)
 
   //This is used to get the category picked by the user from the url.
-  const search = useSearchParams()
-  let category = search.get("value")
+  const[category,setCategory] = useState()
   
   //This is used to determine the length of the word
   let wordarr= (word.split("").filter(value => value !== ' '))
@@ -128,7 +127,6 @@ const Game = ({ onOpen }: any) => {
 
 
   return (
-    <Suspense>
     <main className="p-6 h-screen flex flex-col justify-between gap-y-[3rem] after:absolute after:left-0 after:right-0 after:top-0 after:bottom-0 after:bg-darkNavy *:z-50 after:opacity-70 pt-8 pb-12 md:pb-0">
       {/* NAVBAR */}
       <div className="flex items-center justify-between">
@@ -158,34 +156,10 @@ const Game = ({ onOpen }: any) => {
       </div>
 
       {/* WORD BANKS */}
-      <div className="flex h-[200px] justify-center flex-col lg:mr-[5rem] lg:ml-[5rem] lg:mt-[1rem]">
-
-        <div className="flex flex-wrap p-10 gap-y-2 place-content-center">
-          {/**I NEED TO FIX THIS */}
-          {wordarr?.map((value, i) => (
-            <div key={i} className={`flex gap-x-2 ${life === 120 && 'animate-bounce'} ${(found === wordarr.length) && 'animate-pulse'}`}>
-              
-              {value.split('').map((letter,j)=>(
-                 <p
-                 key={j}
-                 ref={(el:HTMLParagraphElement)=>{
-                    const map = getMap()
-                    if(letter){
-                      map.set(el,letter)
-                    }else{
-                      map.delete(el)
-                    }
-                 }}
-                 className={`font-main text-transparent uppercase flex-1  w-[10vw] xl:w-[8vw]  p-2 ns:p-3  md:p-4 lg:p- rounded-xl text-5xl bg-blue  border-darkNavy border-l-4 border-r-4 border-b-8 border-t-4 md:rounded-2xl border-inner-shadow lg:rounded-[2rem] xl:rounded-[2.5rem] opacity-50 transition-all duration-1000 xl:text-8xl flex items-center justify-center`}
-               >
-                 {letter}
-               </p>
-              ))}
-             
-            </div>
-
-          ))}
-        </div>
+      <div className="flex h-[200px] justify-center flex-col lg:mr-[5rem] lg:ml-[5rem] lg:mt-[1rem]"> 
+            <Suspense>
+            <WordBank OnCategory={setCategory} wordarr={wordarr} found={found} life={life} getMap={getMap}/>
+            </Suspense>          
       </div>
 
       {/* ALPHABET GRID */}
@@ -203,8 +177,49 @@ const Game = ({ onOpen }: any) => {
         ))}
       </div>
     </main>
-    </Suspense>
   );
 };
 
 export default Game;
+
+const WordBank = ({OnCategory, getMap, life,found, wordarr}:any) => {
+  const search = useSearchParams()
+  let category = search.get("value")
+  
+  //I think I have to fix this.
+  useEffect(()=>{
+      OnCategory(category)
+  },[category, OnCategory])
+
+
+  return(
+    <div className="flex flex-wrap p-10 gap-y-2 place-content-center">
+    {/**I NEED TO FIX THIS */}
+    {wordarr?.map((value:string, i:number) => (
+      <div key={i} className={`flex gap-x-2 ${life === 120 && 'animate-bounce'} ${(found === wordarr.length) && 'animate-pulse'}`}>
+        
+        {value.split('').map((letter,j)=>(
+           <p
+           key={j}
+           ref={(el:HTMLParagraphElement)=>{
+              const map = getMap()
+              if(letter){
+                map.set(el,letter)
+              }else{
+                map.delete(el)
+              }
+           }}
+           className={`font-main text-transparent uppercase flex-1  w-[10vw] xl:w-[8vw]  p-2 ns:p-3  md:p-4 lg:p- rounded-xl text-5xl bg-blue  border-darkNavy border-l-4 border-r-4 border-b-8 border-t-4 md:rounded-2xl border-inner-shadow lg:rounded-[2rem] xl:rounded-[2.5rem] opacity-50 transition-all duration-1000 xl:text-8xl flex items-center justify-center`}
+         >
+           {letter}
+         </p>
+        ))}
+       
+      </div>
+
+    ))}
+  </div>
+  )
+}
+
+

@@ -128,6 +128,7 @@ const Game = ({ onOpen }: any) => {
 
 
   return (
+    <Suspense fallback={<p> Searching for word...</p>}>
     <main className="p-6 h-screen flex flex-col justify-between gap-y-[3rem] after:absolute after:left-0 after:right-0 after:top-0 after:bottom-0 after:bg-darkNavy *:z-50 after:opacity-70 pt-8 pb-12 md:pb-0">
       {/* NAVBAR */}
       <div className="flex items-center justify-between">
@@ -158,7 +159,7 @@ const Game = ({ onOpen }: any) => {
 
       {/* WORD BANKS */}
       <div className="flex h-[200px] justify-center flex-col lg:mr-[5rem] lg:ml-[5rem] lg:mt-[1rem]">
-        <Suspense fallback={<p> Searching for word...</p>}>
+
         <div className="flex flex-wrap p-10 gap-y-2 place-content-center">
           {/**I NEED TO FIX THIS */}
           {wordarr?.map((value, i) => (
@@ -185,7 +186,6 @@ const Game = ({ onOpen }: any) => {
 
           ))}
         </div>
-        </Suspense>
       </div>
 
       {/* ALPHABET GRID */}
@@ -203,6 +203,7 @@ const Game = ({ onOpen }: any) => {
         ))}
       </div>
     </main>
+    </Suspense>
   );
 };
 

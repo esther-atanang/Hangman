@@ -1,16 +1,10 @@
 "use client"
-import InstructionButton from "@/app/ui/InstructionButton"
 import PlayButton from "@/app/ui/PlayButton"
 import { CATEGORY, NAVTITLE } from "@/app/constants"
 import { back } from "../Utils"
 import { useRouter } from "next/navigation"
 
 const Category = () => {
-  // const country = fetchRandomCountry()
-  // const books = fetchRandomBook()
-  // const sport = fetchRandomSport()
-  // const animal = fetchRandomAnimal()
- 
   
   return (
     <main className="h-screen p-8 pt-8 lg:pt-24 lg:pl-20 lg:pr-20">

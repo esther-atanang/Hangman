@@ -18,8 +18,6 @@
 - **How to Play**: New to hangman? Visit the "How to Play" page for instructions.
 
 ### Known Issues
-- The **New Game** button is not functioning properly.
-- Additional menu buttons need to be implemented.
 - Responsiveness needs further tweaking to ensure the game looks great on all devices.
 - Planning to add **background music** to enhance the gaming experience.
 
@@ -29,3 +27,7 @@
 3. Install dependencies: `npm install`
 4. Start the development server: `npm run dev`
 5. Enjoy 😄
+
+### Live Website
+Check out the live demo 👇🏾
+- Hangman Game ["https://vercel.com/esther-atanangs-projects/hangman]

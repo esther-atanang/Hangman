@@ -18,8 +18,8 @@ export default function Home() {
 
         <div><PlayButton icon={play} type={"playbtn1"} /></div>
 
-        <div className="w-full mt-16 flex items-center justify-center"><InstructionButton btnText="How to play" type="playbtn4"/></div>
-     
+        <div className="w-full mt-16 flex items-center justify-center"><InstructionButton btnText="How to play" type="playbtn4" /></div>
+
       </header>
     </main>
   );

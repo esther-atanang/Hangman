@@ -27,28 +27,28 @@ let ANIMALS = animals.filter(value=>{
 })
 export function fetchRandomMovie(){
    let randomMovie = movies[Math.floor(Math.random() * movies.length)].title
-   return(randomMovie)
+   return(randomMovie.toLowerCase())
 }
 export function fetchRandomSeries(){
    let randomSeries = series[Math.floor(Math.random() * series.length)].title 
-   return(randomSeries)
+   return(randomSeries.toLowerCase())
 }
 //Merge all of this
 export function fetchRandomCountry() {
     let randomCountry = COUNTRIES[Math.floor(Math.random() * COUNTRIES.length)].name
-    return randomCountry
+    return randomCountry.toLowerCase()
 }
 export function fetchRandomBook() {
     let randomBook = BOOKS[Math.floor(Math.random() * BOOKS.length)].title
-    return  randomBook
+    return  randomBook.toLowerCase()
 }
 
 export function fetchRandomAnimal() {
     let randomAnimal = ANIMALS[Math.floor(Math.random() * ANIMALS.length)]
-    return  randomAnimal;
+    return  randomAnimal.toLowerCase();
 }
 
 export function fetchRandomSport() {
     let randomSport = SPORT[Math.floor(Math.random() * SPORT.length)]
-    return randomSport;
+    return randomSport.toLowerCase();
 }

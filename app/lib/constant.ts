@@ -119,13 +119,7 @@ export const series = [
       "playerUrl": "http://www.netflix.com/WiPlayer?movieid=80017537&trkid=13462986",
       "titleId": 80017537
     },
-    {
-      "title": "Malcolm in the Middle",
-      "boxart": "http://cdn0.nflximg.net/images/2324/8242324.jpg",
-      "trackId": 13462986,
-      "playerUrl": "http://www.netflix.com/WiPlayer?movieid=70155569&trkid=13462986",
-      "titleId": 70155569
-    },
+  
     {
       "title": "Peaky Blinders",
       "boxart": "http://cdn1.nflximg.net/images/9015/11789015.jpg",
@@ -209,14 +203,7 @@ export const series = [
       "trackId": 13462986,
       "playerUrl": "http://www.netflix.com/WiPlayer?movieid=70143825&trkid=13462986",
       "titleId": 70143825
-    },
-    {
-      "title": "Courage the Cowardly Dog",
-      "boxart": "http://cdn1.nflximg.net/images/0669/20920669.jpg",
-      "trackId": 13462986,
-      "playerUrl": "http://www.netflix.com/WiPlayer?movieid=70268352&trkid=13462986",
-      "titleId": 70268352
-    },
+    }, 
     {
       "title": "Chasing Tyson",
       "boxart": "http://cdn1.nflximg.net/images/8347/23978347.jpg",
@@ -231,26 +218,13 @@ export const series = [
       "playerUrl": "http://www.netflix.com/WiPlayer?movieid=70285751&trkid=13462986",
       "titleId": 70285751
     },
-    {
-      "title": "Real Husbands of Hollywood",
-      "boxart": "http://cdn1.nflximg.net/images/2187/22472187.jpg",
-      "trackId": 13462986,
-      "playerUrl": "http://www.netflix.com/WiPlayer?movieid=70292839&trkid=13462986",
-      "titleId": 70292839
-    },
+
     {
       "title": "Inside Man",
       "boxart": "http://cdn1.nflximg.net/images/4199/9654199.jpg",
       "trackId": 13462986,
       "playerUrl": "http://www.netflix.com/WiPlayer?movieid=70304980&trkid=13462986",
       "titleId": 70304980
-    },
-    {
-      "title": "The Mysteries of Laura",
-      "boxart": "http://cdn1.nflximg.net/images/1035/22611035.jpg",
-      "trackId": 13462986,
-      "playerUrl": "http://www.netflix.com/WiPlayer?movieid=80032054&trkid=13462986",
-      "titleId": 80032054
     },
     {
       "title": "My Name Is Earl",

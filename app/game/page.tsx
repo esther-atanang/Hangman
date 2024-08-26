@@ -128,7 +128,7 @@ const Game = ({ onOpen }: any) => {
 
 
   return (
-    <Suspense fallback={<p> Searching for word...</p>}>
+    <Suspense>
     <main className="p-6 h-screen flex flex-col justify-between gap-y-[3rem] after:absolute after:left-0 after:right-0 after:top-0 after:bottom-0 after:bg-darkNavy *:z-50 after:opacity-70 pt-8 pb-12 md:pb-0">
       {/* NAVBAR */}
       <div className="flex items-center justify-between">

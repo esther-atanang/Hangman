@@ -121,7 +121,7 @@
     }
 
     .playbtn2 {
-        @apply w-[80px] h-[80px];
+        @apply w-[60px] h-[60px];
     }
 
     .playbtn3 {

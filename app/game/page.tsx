@@ -102,11 +102,11 @@ const Game = ({ onOpen, reload, setReload }: any) => {
     <main className="p-6 h-screen flex flex-col justify-between gap-y-[3rem] after:absolute after:left-0 after:right-0 after:top-0 after:bottom-0 after:bg-darkNavy *:z-50 after:opacity-70  md:pl-12 md:pr-12 lg:pl-16 lg:pr-16 xl:pr-24 xl:pl-24 lg:pt-14 pb-12 md:pb-0">
       {/* NAVBAR */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-x-10">
+        <div className="flex items-center gap-x-6">
           <button className={`playbtn2 gradient flex items-center justify-center rounded-[100%] after:bg-gradient-to-b after:top-[35%] after:left-[50%] after:rounded-[100%] after:absolute after:translate-x-[-50%] after:translate-y-[-50%] relative shadow-1 `} onClick={() => onOpen((value: string) => "paused")}>
             <Image
               src={menu}
-              className="z-50 w-[35px]"
+              className="z-50 w-[25px]"
               alt=""
             />
           </button>

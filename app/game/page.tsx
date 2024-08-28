@@ -60,12 +60,15 @@ const Game = ({ onOpen, reload, setReload }: any) => {
     let map = getMap()
     map.forEach((value: string, key: HTMLParagraphElement) => {
       //THE ERROR IS HERE!!!
-      if (value == letter.toLowerCase()) {
+
+      if ( (map.get(key)) == letter.toLowerCase() ) {
         counter++;
         if (key) {
-          key.classList.add("text-white")
-          key.classList.add("opacity-[1]")
+          let item = key;
+         
           map.delete(key)
+          item.classList.add("text-white")
+          item.classList.add("opacity-[1]")
         }
       }
     })
@@ -170,10 +173,10 @@ const WordBank = ({ OnCategory, getMap, win, life, word, reload }: any) => {
   let wordarr = word.split(" ")
 
   return (
-    <div className="flex flex-wrap p-10 gap-y-2 place-content-center">
+    <div className="flex flex-wrap p-10 gap-x-5 gap-y-2 place-content-center">
       {/**I NEED TO FIX THIS */}
       {wordarr?.map((value: string, i: number) => (
-        <div key={i} className={`flex gap-x-2 ${life === 120 && 'animate-bounce'} ${(win) && 'animate-pulse'} ${reload && 'animate-none'}`}>
+        <div key={i} className={`flex ${life === 120 && 'animate-bounce'} ${(win) && 'animate-pulse'} ${reload && 'animate-none'}`}>
 
           {value.split('').map((letter, j) => (
             <p

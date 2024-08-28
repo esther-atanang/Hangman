@@ -23,18 +23,28 @@
 
 @keyframes slide-and-fade-in {
     0% {
-        top: 50px;
-        transform: scale(0.85);
+        top: 40px;
     }
 
     100% {
         top: 0px;
-        transform: scale(1);
+    }
+}
+
+@keyframes moveUp {
+    0%{
+        transform: translateY(10%);
+    }
+    100%{
+        transform: translateY(0%);
     }
 }
 
 /*Put all of the colors somewher, hide them **/
 @layer utilities {
+    .movebtn{
+        animation: moveUp linear 0.2s;
+    }
     .grid-cols {
         display: grid;
         grid-template-columns: repeat(9, min(80px, 1fr))
@@ -65,7 +75,7 @@
     }
 
     .animate-card {
-        animation: slide-and-fade-in 0.5s ease-out;
+        animation: slide-and-fade-in 0.5s linear;
     }
 
     .second {

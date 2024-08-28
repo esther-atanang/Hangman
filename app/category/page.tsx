@@ -25,7 +25,7 @@ export default Category
 const CategoryBtn = ({btnText, value}:{btnText:string, value:string}) =>{
   const router = useRouter()
   return(
-    <button className={` text-white bg-blue pl-14 pr-14 border-darkNavy border-l-4 border-r-4 border-b-[6px] border-t-2 uppercase border-inner-shadow text-3xl text-nowrap lg:text-5xl playbtn3 tracking-wider hover:bg-hoverBtn`} onClick={() => router.push(`/game?value=${value}`)} >
+    <button className={` text-white bg-blue pl-14 pr-14 border-darkNavy border-l-4 border-r-4 border-b-[6px] border-t-2 uppercase border-inner-shadow text-3xl text-nowrap lg:text-5xl playbtn3 tracking-wider hover:bg-hoverBtn hover:movebtn` } onClick={() => router.push(`/game?value=${value}`)} >
     {btnText}
  </button>
   )

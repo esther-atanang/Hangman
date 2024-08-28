@@ -13,13 +13,13 @@ const Menu = ({onOpen, menuType}:any) => {
 
         <div className="flex items-center flex-col gap-y-8">
 
-          <button className={` text-white bg-blue w-[50vw] md:w-[37vw] lg:w-[25vw] border-darkNavy border-l-4 border-r-4 border-b-[6px] border-t-2 uppercase border-inner-shadow text-3xl text-nowrap lg:text-5xl playbtn4 tracking-wider hover:bg-hoverBtn disabled:opacity-60 disabled:hover:bg-blue disabled:cursor-not-allowed`} onClick={()=>onOpen("")} disabled={menuType == "You Lose" && true}>
+          <button className={` text-white bg-blue w-[50vw] md:w-[37vw] lg:w-[25vw] border-darkNavy border-l-4 border-r-4 border-b-[6px] border-t-2 uppercase border-inner-shadow text-3xl text-nowrap lg:text-5xl playbtn4 tracking-wider hover:bg-hoverBtn disabled:opacity-60 disabled:hover:bg-blue disabled:cursor-not-allowed hover:movebtn`} onClick={()=>onOpen("")} disabled={menuType == "You Lose" && true}>
             Continue
           </button>
-          <button className={` text-white bg-blue w-[55vw] md:w-[40vw] lg:w-[30vw] border-darkNavy border-l-4 border-r-4 border-b-[6px] border-t-2 uppercase border-inner-shadow text-3xl text-nowrap lg:text-5xl  playbtn4 tracking-wider hover:bg-hoverBtn`} onClick={()=>router.push("/category")}>
+          <button className={` text-white bg-blue w-[55vw] md:w-[40vw] lg:w-[30vw] border-darkNavy border-l-4 border-r-4 border-b-[6px] border-t-2 uppercase border-inner-shadow text-3xl text-nowrap lg:text-5xl  playbtn4 tracking-wider hover:bg-hoverBtn hover:movebtn`} onClick={()=>router.push("/category")}>
              New Category
           </button>
-          <button className={` text-white bg-blue w-[50vw] md:w-[37vw] lg:w-[25vw] border-darkNavy border-l-4 border-r-4 border-b-[6px] border-t-2 uppercase border-inner-shadow text-3xl text-nowrap lg:text-5xl playbtn4 quitbtn tracking-wider hover:bg-hoverBtn`} onClick={()=>router.push("/")}>
+          <button className={` text-white bg-blue w-[50vw] md:w-[37vw] lg:w-[25vw] border-darkNavy border-l-4 border-r-4 border-b-[6px] border-t-2 uppercase border-inner-shadow text-3xl text-nowrap lg:text-5xl playbtn4 quitbtn tracking-wider hover:bg-hoverBtn hover:movebtn`} onClick={()=>router.push("/")}>
             Quit
           </button>
         

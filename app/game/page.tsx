@@ -188,7 +188,7 @@ const WordDisplay = ({currentWord, hasLost, onSelectedCategory}: any) => {
               value.map((letter: any) => {
                 <p>letter</p>
        
-                  return( letter !== " " && <p key={letter.id} className={` sm:text-3xl p-2 md:text-5xl lg:pr-5 lg:pl-5  xl:text-[4rem] xl:pl-6 xl:pr-6  bg-blue flex justify-center  rounded-[1rem] flex-1 max-w-[50px] lg:max-w-[70px]  border-darkNavy  border-l-4 border-r-4 border-b-8 border-t-4 border-inner-shadow uppercase ${!letter.seen &&"opacity-50"}  text-transparent ${letter.seen && "opacity-100 transition-all text-white"}`} >{letter.letter}</p>)
+                  return( letter !== " " && <p key={letter.id} className={` sm:text-4xl p-3 pr-5 pl-5 ns:pr-7 ns:pl-7 md:text-5xl md:pr-6 md:pl-6 lg:pr-7 lg:pl-7 xl:pr-8 xl:pl-8 xl:rounded-[2rem]   xl:text-[4rem] bg-blue flex justify-center  rounded-[1rem] flex-1 max-w-[50px] lg:max-w-[70px]  border-darkNavy  border-l-4 border-r-4 border-b-8 border-t-4 border-inner-shadow uppercase ${!letter.seen &&"opacity-50"}  text-transparent ${letter.seen && "opacity-100 transition-all text-white"}`} >{letter.letter}</p>)
                 
               
               })

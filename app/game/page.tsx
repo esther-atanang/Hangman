@@ -24,13 +24,6 @@ const Game = ({ onPopUp, reload, setReload }: any) => {
     setCurrentWord,
   } = useWordGenerator(reload)
   
-  const categoryParam = useSearchParams()
-  let userSelectedCategory:string = categoryParam.get("value") as string
-
-  //sets the category seleted by the user.
-  useEffect(() => {
-    setSelectedCategory(userSelectedCategory)
-  }, [selectedCategory])
 
   //If Player Loses 
   useEffect(() => {
@@ -147,6 +140,7 @@ const Game = ({ onPopUp, reload, setReload }: any) => {
           <WordDisplay 
           currentWord={currentWord} 
           hasLost={hasLost} 
+          onSelectedCategory={setSelectedCategory}
           />
         </Suspense>
       </div>
@@ -175,7 +169,15 @@ export default Game;
 
 
 
-const WordDisplay = ({currentWord, hasLost}: any) => {
+const WordDisplay = ({currentWord, hasLost, onSelectedCategory}: any) => {
+  const categoryParam = useSearchParams()
+  let userSelectedCategory:string = categoryParam.get("value") as string
+
+  //sets the category seleted by the user.
+  useEffect(() => {
+    onSelectedCategory(userSelectedCategory)
+  }, [onSelectedCategory])
+
   return (
     <div className="flex flex-wrap justify-center gap-y-2 gap-x-5">
       {currentWord.map((value: any) => {

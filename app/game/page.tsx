@@ -2,15 +2,24 @@
 import { ALPHABET } from "@/app/constants";
 import { heart, menu } from "@/app/Utils";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useRef, useState } from "react";
-import useWordGenerator from "../hooks/useWordGenerator";
+import React, { SetStateAction, Suspense, useEffect, useMemo, useRef, useState } from "react";
+import useWordGenerator, { ITEMS, processedWord } from "../hooks/useWordGenerator";
+import WordDisplay from "../ui/wordDisplay";
 
 
-
-const Game = ({ onPopUp, reload, setReload }: any) => {
+type popUpParameters = ""|"paused"|"You Win"|"You Lose"
+const Game = ({
+  onPopUp,
+  reload,
+  setReload
+}:
+  {
+    onPopUp: (type:popUpParameters) => void,
+    reload: boolean,
+    setReload: React.Dispatch<SetStateAction<boolean>>
+  }) => {
   const buttonRef = useRef<HTMLButtonElement[]>([])
-  const id= useRef<NodeJS.Timeout | null>(null)
+  const id = useRef<NodeJS.Timeout | null>(null)
   const healthRef = useRef(null)
 
   const [playerHealth, setPlayerHealth] = useState(0)
@@ -23,33 +32,34 @@ const Game = ({ onPopUp, reload, setReload }: any) => {
     setSelectedCategory,
     setCurrentWord,
   } = useWordGenerator(reload)
-  
+
 
   //If Player Loses 
-  useEffect(() => {
+  useEffect(():()=>void => {
     if (playerHealth == 100 && !hasWon) {
       setHasLost(true)
-      let updatedState = currentWord.map((value:any)=>{
-         return value.map((item:any)=>{
-            return{
-               ...item,
-               seen: true
-            }
-         })
+      let updatedState: unknown = currentWord?.map((value: processedWord[]) => {
+        return value.map((item: processedWord) => {
+          return {
+            ...item,
+            seen: true
+          }
+        })
       })
-      setCurrentWord(updatedState)
-      id.current = setTimeout(()=>onPopUp("You Lose"), 2000)  
+
+      setCurrentWord(updatedState as ITEMS[])
+      id.current = setTimeout(() => onPopUp("You Lose"), 2000)
     }
-    return () => clearTimeout(id.current as NodeJS.Timeout)
+    return () => id.current && clearTimeout(id.current as NodeJS.Timeout)
   }, [playerHealth])
 
-//If player Wins
+  //If player Wins
   useEffect(() => {
-    let hasWon = false;
-    if(currentWord.length !== 0){
-        hasWon = currentWord.every((value: any) => {
-       return value.every((item: any) => item.seen)
-    })
+    let hasWon: boolean = false;
+    if (currentWord?.length !== 0) {
+      hasWon = currentWord?.every((value: processedWord[]) => {
+        return value.every((item: processedWord) => item.seen)
+      }) as boolean
     }
 
     if (hasWon && !hasLost) {
@@ -57,12 +67,12 @@ const Game = ({ onPopUp, reload, setReload }: any) => {
       onPopUp("You Win")
     }
     return () => { hasWon = false }
-  }, [currentWord,hasLost])
+  }, [currentWord, hasLost,hasWon])
 
 
- //If a reload is requested.
+  //If a reload is requested.
   useEffect(() => {
-    if(reload){
+    if (reload) {
       buttonRef.current.map((value: HTMLButtonElement) => value.disabled = false)
       onPopUp("")
       setHasWon(false)
@@ -70,14 +80,14 @@ const Game = ({ onPopUp, reload, setReload }: any) => {
       setPlayerHealth(0)
       setReload(false)
     }
-  }, [reload,selectedCategory])
+  }, [reload, selectedCategory])
 
   //This works when a letter is picked
   function handleLetterSelection(i: number, letter: string) {
     buttonRef.current[i].disabled = true
     let matchCount = 0;
-    let updatedWordState = currentWord.map((value: any) => {
-      return value.map((item: any) => {
+    let updatedWordState: unknown = currentWord?.map((value: processedWord[]) => {
+      return value.map((item: processedWord) => {
         if (item.letter === letter.toLowerCase()) {
           matchCount++
           return {
@@ -89,27 +99,27 @@ const Game = ({ onPopUp, reload, setReload }: any) => {
       })
     })
 
-    setCurrentWord(updatedWordState)
+    setCurrentWord(updatedWordState as ITEMS[])
 
     //If player Picks the wrong letter 
     if (matchCount == 0 && playerHealth !== 100) {
       setPlayerHealth(value => value += 20)
     }
   }
- 
-  
+
+
 
   return (
-    <main 
-    className="p-6 h-screen flex flex-col justify-between gap-y-[3rem] after:absolute after:left-0 after:right-0 after:top-0 after:bottom-0 after:bg-darkNavy *:z-50 after:opacity-70  md:pl-12 md:pr-12 lg:pl-16 lg:pr-16 xl:pr-24 xl:pl-24 lg:pt-14 pb-12 md:pb-0"
+    <main
+      className="p-6 h-screen flex flex-col justify-between gap-y-[3rem] after:absolute after:left-0 after:right-0 after:top-0 after:bottom-0 after:bg-darkNavy *:z-50 after:opacity-70  md:pl-12 md:pr-12 lg:pl-16 lg:pr-16 xl:pr-24 xl:pl-24 lg:pt-14 pb-12 md:pb-0"
     >
       {/*top Navigation*/}
       <div className="flex items-center justify-between">
-        <div  className="flex items-center gap-x-6">
-          <button 
-          className={`playbtn2 gradient flex items-center justify-center rounded-[100%] after:bg-gradient-to-b after:top-[35%] after:left-[50%] after:rounded-[100%] after:absolute after:translate-x-[-50%] after:translate-y-[-50%] relative shadow-1 `} 
-          onClick={() => onPopUp("paused")}
-          type="button"
+        <div className="flex items-center gap-x-6">
+          <button
+            className={`playbtn2 gradient flex items-center justify-center rounded-[100%] after:bg-gradient-to-b after:top-[35%] after:left-[50%] after:rounded-[100%] after:absolute after:translate-x-[-50%] after:translate-y-[-50%] relative shadow-1 `}
+            onClick={() => onPopUp("paused")}
+            type="button"
           >
             <Image
               src={menu}
@@ -137,10 +147,10 @@ const Game = ({ onPopUp, reload, setReload }: any) => {
       {/* Word Display */}
       <div>
         <Suspense>
-          <WordDisplay 
-          currentWord={currentWord} 
-          hasLost={hasLost} 
-          onSelectedCategory={setSelectedCategory}
+          <WordDisplay
+            currentWord={currentWord}
+            hasLost={hasLost}
+            onSelectedCategory={setSelectedCategory}
           />
         </Suspense>
       </div>
@@ -151,7 +161,7 @@ const Game = ({ onPopUp, reload, setReload }: any) => {
           <button
             type="button"
             key={value}
-            ref={(el: HTMLButtonElement) => {buttonRef.current[i] = el }}
+            ref={(el: HTMLButtonElement) => { buttonRef.current[i] = el }}
             onClick={() => handleLetterSelection(i, value)}
             className="bg-white text-darkNavy font-main text-center md:rounded-[1.8rem] h-full text-3xl ns:text-4xl md:text-5xl lg:text-[2.7rem] pt-3 pb-4 xl:pb-3 rounded-md font-semibold disabled:opacity-50 disabled:cursor-not-allowed border-darkNavy border-b-4 active:border-b-0 "
           >
@@ -169,34 +179,3 @@ export default Game;
 
 
 
-const WordDisplay = ({currentWord, hasLost, onSelectedCategory}: any) => {
-  const categoryParam = useSearchParams()
-  let userSelectedCategory:string = categoryParam.get("value") as string
-
-  //sets the category seleted by the user.
-  useEffect(() => {
-    onSelectedCategory(userSelectedCategory)
-  }, [onSelectedCategory])
-
-  return (
-    <div className="flex flex-wrap justify-center gap-y-2 gap-x-5">
-      {currentWord.map((value: any) => {
-        return (
-          <div key={value} className={`flex justify-center ${hasLost && "animate-bounce"}`}>
-            {
-
-              value.map((letter: any) => {
-                <p>letter</p>
-       
-                  return( letter !== " " && <p key={letter.id} className={` sm:text-4xl p-3 pr-5 pl-5 ns:pr-7 ns:pl-7 md:text-5xl md:pr-6 md:pl-6 lg:pr-7 lg:pl-7 xl:pr-8 xl:pl-8 xl:rounded-[2rem]   xl:text-[4rem] bg-blue flex justify-center  rounded-[1rem] flex-1 max-w-[50px] lg:max-w-[70px]  border-darkNavy  border-l-4 border-r-4 border-b-8 border-t-4 border-inner-shadow uppercase ${!letter.seen &&"opacity-50"}  text-transparent ${letter.seen && "opacity-100 transition-all text-white"}`} >{letter.letter}</p>)
-                
-              
-              })
-            }
-          </div>
-        )
-
-      })}
-    </div>
-  )
-}

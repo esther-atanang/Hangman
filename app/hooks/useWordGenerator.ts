@@ -1,17 +1,20 @@
-import { useEffect, useState } from "react"
+import React, { SetStateAction, useEffect, useState } from "react"
 import { fetchRandomAnimal, fetchRandomBook, fetchRandomCountry, fetchRandomMovie, fetchRandomSeries, fetchRandomSport } from "../lib/data";
+import { v4 as uuidv4 } from 'uuid';
 
 
-interface processedWord{
+export type processedWord = {
   id: number,
   letter: string,
   seen: boolean
 }
-interface Returns {
+export type ITEMS = processedWord[]
+
+type Returns = {
   selectedCategory: string;
-  currentWord: processedWord[]; //Come and correct this later
-  setCurrentWord: any;
-  setSelectedCategory: (s: string) => void;
+  currentWord: ITEMS[] | null; //Come and correct this later
+  setCurrentWord: React.Dispatch<SetStateAction<ITEMS[] | null >>;
+  setSelectedCategory: React.Dispatch<SetStateAction<string>>
 }
 
 
@@ -19,7 +22,7 @@ export default function useWordGenerator(reload: boolean): Returns {
   //This is used to get the category picked by the user from the url.
   const [selectedCategory, setSelectedCategory] = useState<string>("")
   //The word that loads up when the game starts
-  const [currentWord, setCurrentWord] = useState([])
+  const [currentWord, setCurrentWord] = useState<ITEMS[]| null>(null)
 
   useEffect((): any => {
     let curr_word: string = "";
@@ -42,20 +45,20 @@ export default function useWordGenerator(reload: boolean): Returns {
 
     if (curr_word) {
       let wordSegments = curr_word.split(" ")
-      let letterId = 0
-      let processedWordArray = wordSegments.map(value => {
+      // let letterId = 0
+      let processedWordArray:unknown = wordSegments.map(value => {
         if (value) {
           return value.split("").map(value => {
             return {
-              id: letterId++,
+              id: uuidv4(),
               letter: value,
               seen: false
             }
           })
         }
-      })
-
-      setCurrentWord(processedWordArray as any)
+      }) 
+ 
+      setCurrentWord(processedWordArray as ITEMS[])
     }
 
     return () => curr_word = ""

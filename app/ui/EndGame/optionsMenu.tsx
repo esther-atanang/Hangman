@@ -14,7 +14,7 @@ const Menu = (
     <div className="absolute top-0 left-0 right-0 z-[9999]  flex items-center justify-center h-screen p-10 bg-transparent_darkNavy">
       <div className="header-bg border-headerBorder border-b-[10px] border-t-2 border-l-4 border-r-4 rounded-[3.5rem] header-inner-shadow relative flex items-center w-full max-w-[600px] flex-col p-6 pb-14 lg:rounded-[5rem]">
 
-        <div className="relative -top-16"><h1 className="font-main *:inline text-8xl lg:text-[9rem] text-white relative lg:-top-8 capitalize"><p className="relative z-20 text-c">{menuType}</p> <p className="absolute top-0 left-0 text-s">{menuType}</p></h1></div>
+        <div className="relative -top-16"><h1 className="font-main *:inline text-[4.75rem] sm:text-8xl lg:text-[9rem] text-white relative -top-3 lg:-top-8 capitalize"><p className="relative z-20 text-c">{menuType}</p> <p className="absolute top-0 left-0 text-s">{menuType}</p></h1></div>
 
         <div className="flex items-center flex-col gap-y-8">
 

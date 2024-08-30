@@ -21,16 +21,6 @@
 }
 
 
-@keyframes slide-and-fade-in {
-    0% {
-        top: 40px;
-    }
-
-    100% {
-        top: 0px;
-    }
-}
-
 @keyframes moveUp {
     0%{
         transform: translateY(10%);
@@ -74,9 +64,6 @@
         animation: loadUp 0.5s ease-in;
     }
 
-    .animate-card {
-        animation: slide-and-fade-in 0.5s linear;
-    }
 
     .second {
         animation-delay: 0.5s;

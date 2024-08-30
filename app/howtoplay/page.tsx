@@ -10,9 +10,9 @@ const page = () => {
                 <div><StartButton icon={back} type={"playbtn2"} size={"btnImgSize"}/></div>
                 <div className="flex flex-1 justify-end md:justify-center"><h1 className="font-main text-6xl text-white relative "><p className="relative z-20 text-c">{NAVTITLE[0]}</p> <p className="absolute top-0 left-0 text-s">{NAVTITLE[0]}</p></h1></div>
             </section>
-            <section className="flex flex-col gap-y-5 sm:gap-y-6 mt-10  ns:mt-12 md:mt-12 ml:mt-20 lg:mt-12 lg:flex-row lg:gap-x-6 lg:pt-12 ">
+            <section className="flex flex-col gap-y-5 sm:gap-y-6 mt-10  ns:mt-12 lg:flex-row lg:gap-x-6 lg:pt-2 ">
                 {INSTRUCTION.map((value) =>(
-                    <div key={value.id} className={`bg-white p-6 flex flex-row lg:flex-col gap-x-6 rounded-3xl lg:gap-y-10 lg:flex-1 lg:p-7 lg:pb-16 lg:pt-5 xl:pt-12 animate-card ${value.class} relative`}>
+                    <div key={value.id} className={`bg-white p-6 flex flex-row lg:flex-col gap-x-6 rounded-3xl lg:gap-y-10 lg:flex-1 lg:p-7 lg:pb-16 lg:pt-5 xl:pt-12 ${value.class} relative`}>
                     <div className="gap-x-5 md:flex md:items-center md:justify-center">
                         <p className="text-3xl md:text-5xl text-blue lg:text-6xl">{value.id}</p>
                        

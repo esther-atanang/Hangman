@@ -1,4 +1,4 @@
-import PlayButton from "@/app/ui/PlayButton"
+import StartButton from "@/app/ui/StartButton"
 import { INSTRUCTION, NAVTITLE } from "@/app/constants/index"
 import { back } from "@/app/Utils/index"
 
@@ -7,7 +7,7 @@ const page = () => {
     return (
         <main className="h-screen p-6 font-main ns:p-10 md:p-12 lg:p-16 lg:pt-20 after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-darkNavy after:opacity-70 *:relative *:z-50">
             <section className="flex items-center justify-between ">
-                <div><PlayButton icon={back} type={"playbtn2"} size={"btnImgSize"}/></div>
+                <div><StartButton icon={back} type={"playbtn2"} size={"btnImgSize"}/></div>
                 <div className="flex flex-1 justify-end md:justify-center"><h1 className="font-main text-6xl text-white relative "><p className="relative z-20 text-c">{NAVTITLE[0]}</p> <p className="absolute top-0 left-0 text-s">{NAVTITLE[0]}</p></h1></div>
             </section>
             <section className="flex flex-col gap-y-5 sm:gap-y-6 mt-10  ns:mt-12 md:mt-12 ml:mt-20 lg:mt-12 lg:flex-row lg:gap-x-6 lg:pt-12 ">

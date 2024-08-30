@@ -602,18 +602,6 @@ export const movies = [
     "description": "When a prisoner transfer van is attacked, the cop in charge must fight those inside and outside while dealing with a silent foe: the icy temperatures."
   },
   {
-    "title": "Batman: Soul of the Dragon",
-    "year": 2021,
-    "votes": 82,
-    "genreIds": [
-      16,
-      28,
-      12,
-      80
-    ],
-    "description": "Bruce Wayne faces a deadly menace from his past, with the help of three former classmates: world-renowned martial artists Richard Dragon, Ben Turner and Lady Shiva."
-  },
-  {
     "title": "Birds of Prey",
     "year": 2020,
     "votes": 6848,

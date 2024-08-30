@@ -3,7 +3,12 @@ import { useRouter } from "next/navigation"
 
 
 //Change the menu type on every click
-const Menu = ({menuType, handleNewGame}:any) => {
+const Menu = (
+  {
+    menuType,
+  onSelected
+}:any
+) => {
   const router = useRouter()
   return (
     <div className="absolute top-0 left-0 right-0 z-[9999]  flex items-center justify-center h-screen p-10 bg-transparent_darkNavy">
@@ -13,7 +18,7 @@ const Menu = ({menuType, handleNewGame}:any) => {
 
         <div className="flex items-center flex-col gap-y-8">
 
-          <button className={` text-white bg-blue w-[50vw] md:w-[37vw] lg:w-[25vw]  border-darkNavy border-l-4 border-r-4 border-b-[6px] border-t-2 uppercase border-inner-shadow text-3xl text-nowrap lg:text-5xl playbtn4 tracking-wider hover:bg-hoverBtn disabled:opacity-60 disabled:hover:bg-blue disabled:cursor-not-allowed hover:movebtn`} onClick={()=>handleNewGame(true)}>
+          <button className={` text-white bg-blue w-[50vw] md:w-[37vw] lg:w-[25vw]  border-darkNavy border-l-4 border-r-4 border-b-[6px] border-t-2 uppercase border-inner-shadow text-3xl text-nowrap lg:text-5xl playbtn4 tracking-wider hover:bg-hoverBtn disabled:opacity-60 disabled:hover:bg-blue disabled:cursor-not-allowed hover:movebtn`} onClick={()=>onSelected(true)}>
             Play Again!
           </button>
           <button className={` text-white bg-blue w-[55vw] md:w-[40vw] lg:w-[30vw] border-darkNavy border-l-4 border-r-4 border-b-[6px] border-t-2 uppercase border-inner-shadow text-3xl text-nowrap lg:text-5xl  playbtn4 tracking-wider hover:bg-hoverBtn hover:movebtn`} onClick={()=>{router.push("/category")}}>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import play from "@/public/assets/play.svg"
 import logo from "@/public/assets/logo.svg"
-import PlayButton from "./ui/PlayButton";
+import StartButton from "./ui/StartButton";
 import InstructionButton from "./ui/InstructionButton";
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
           />
         </div>
 
-        <div><PlayButton icon={play} type={"playbtn1"} /></div>
+        <div><StartButton icon={play} type={"playbtn1"} /></div>
 
         <div className="w-full mt-16 flex items-center justify-center"><InstructionButton btnText="How to play" type="playbtn4" /></div>
 
